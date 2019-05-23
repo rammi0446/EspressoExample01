@@ -28,9 +28,11 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -94,11 +96,26 @@ public class ExampleInstrumentedTest {
 
     // TC2:  Test then when you type nonsense into box, text appears on page 2
     @Test
-    public void testInputBox() {
+    public void testInputBox() throws Exception {
         // 1. find the text box
-        // 2. type some nonsese
+        // 2. type some nonsese (sendKeys() in selenium)
+        onView(withId(R.id.editText_main)).perform(typeText("HELLO JENELLE!"));
+
         // 3. click on SEND button (find the button + click)
+        onView(withId(R.id.button_main)).perform(click());
+
         // 4. make sure text appears
+
+        sleep(3000);
+
+        // matches(isDisplayed()) checks if LABEL is SHOWN (appears on screen)
+        onView(withId(R.id.text_message)).check(matches(isDisplayed()));
+
+        // matches(withText("....")) checks the WORDS inside the label
+        String expectedOutput = "HELLO JENELLE!";
+        onView(withId(R.id.text_message)).check(matches(withText(expectedOutput)));
+
+        sleep(1000);
 
     }
 
