@@ -18,12 +18,15 @@ package com.example.android.twoactivities;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -32,11 +35,55 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    @Test
-    public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.android.twoactivities", appContext.getPackageName());
+    /**   WEB
+     *      1. Get the url                  const final STring URL = "blazedemo.com"
+     *      2. Find element on page
+     *      3. If button, click
+     *      4. If text, do something
+     *      5. Check actual result = expected result
+     */
+
+    /**   ANDROID
+     *     1.  What screen do you want test (what screen should i start at)?
+     *     2.  Find element on screen (button, edittext, textveiw)
+     *     3.  If button --> CLICK ON IT!
+     *     4.  If input box --> TYPE STUFF IN IT
+     *     5.  If label --> CHECK THE TEXT
+     *     6.  Check actual result = expected result
+     */
+
+
+
+    // 1. Tell Android what screen you want to test
+    // In example below, it will start on MainActivity.java
+    @Rule
+    public ActivityTestRule activityRule =
+            new ActivityTestRule<>(MainActivity.class);
+
+
+    // TEST CASES
+    // TC1:  Test that when you push the SEND button, it goes to next screen
+    // TC2:  Test then when you type nonsense into box, text appears on page 2
+    @Test
+    public void testGoingToNextPage() {
+
     }
+
+    @Test
+    public void testInputBox() {
+        fail("This test case is not implemented yet!");
+    }
+
+
+
+//
+//    @Test
+//    public void useAppContext() throws Exception {
+//        // Context of the app under test.
+//        Context appContext = InstrumentationRegistry.getTargetContext();
+//
+//        assertEquals("com.example.android.twoactivities", appContext.getPackageName());
+//    }
+
 }
