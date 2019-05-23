@@ -25,6 +25,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -66,13 +73,29 @@ public class ExampleInstrumentedTest {
     // TC1:  Test that when you push the SEND button, it goes to next screen
     // TC2:  Test then when you type nonsense into box, text appears on page 2
     @Test
-    public void testGoingToNextPage() {
+    public void testGoingToNextPage() throws Exception {
+       // onView(withId(R.id.______))
 
+        // get the button and click it
+        onView(withId(R.id.button_main)).perform(click());
+
+        sleep(1000);        // i don't know if sleep actually works!
+
+        // on next page, check that there is a label called "text_header"
+        onView(withId(R.id.text_header)).check(matches(isDisplayed()));
+
+        sleep(3000);
+
+        // go back to previous page
+        //  -- find reply button and click on it?
+        onView(withId(R.id.button_second)).perform(click());
+
+        sleep(1000);
     }
 
     @Test
     public void testInputBox() {
-        fail("This test case is not implemented yet!");
+        //fail("This test case is not implemented yet!");
     }
 
 
