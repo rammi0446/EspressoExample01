@@ -71,7 +71,6 @@ public class ExampleInstrumentedTest {
 
     // TEST CASES
     // TC1:  Test that when you push the SEND button, it goes to next screen
-    // TC2:  Test then when you type nonsense into box, text appears on page 2
     @Test
     public void testGoingToNextPage() throws Exception {
        // onView(withId(R.id.______))
@@ -93,9 +92,14 @@ public class ExampleInstrumentedTest {
         sleep(1000);
     }
 
+    // TC2:  Test then when you type nonsense into box, text appears on page 2
     @Test
     public void testInputBox() {
-        //fail("This test case is not implemented yet!");
+        // 1. find the text box
+        // 2. type some nonsese
+        // 3. click on SEND button (find the button + click)
+        // 4. make sure text appears
+
     }
 
 
